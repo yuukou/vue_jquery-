@@ -7,9 +7,18 @@
 </head>
 <body>
 
-<div id="app">
-    <p> Hello {{ name }} !</p>
-    <p><input type="text" v-model="name"></p>
+<div id="app" class="container">
+    <h1>My Todos</h1>
+    <ul>
+<!--        <li>{{ todos[0] }}</li>-->
+<!--        <li>{{ todos[1] }}</li>-->
+<!--        <li>{{ todos[2] }}</li>-->
+        <li v-for="todo in todos">{{ todo }}</li>
+    </ul>
+    <form @submit.prevent="addItem">
+        <input type="text" v-model="newItem">
+        <input type="submit" value="Add">
+    </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
