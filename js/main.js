@@ -42,13 +42,17 @@
             onInput: function () {
                 this.isError = false;
             },
+            purge: function () {
+                if (confirm('delete finished ?')) {
+                    this.todos = this.remaining;
+                }
+            },
         },
         computed: {
             remaining: function () {
-                var items = this.todos.filter(function (todo) {
+                return this.todos.filter(function (todo) {
                     return ! todo.isDone;
                 });
-                return items.length;
             }
         },
     });
