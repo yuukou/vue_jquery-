@@ -5,22 +5,40 @@
         el: '#app',
         data: {
             newItem: '',
-            todos: [
-                'task1',
-                'task2',
-                'task3',
-            ]
+            // todos: [
+            //     {
+            //         title: 'task1',
+            //         isDone: false,
+            //     },
+            //     {
+            //         title: 'task2',
+            //         isDone: false,
+            //     },
+            //     {
+            //         title: 'task3',
+            //         isDone: true,
+            //     },
+            // ]
+            todos: []
         },
         methods: {
-            addItem: function(e) {
+            addItem: function() {
                 if (this.newItem) {
-                    // e.preventDefault();
-                    this.todos.push(this.newItem);
+                    var item = {
+                        title: this.newItem,
+                        idDone: false
+                    };
+                    this.todos.push(item);
                     this.newItem = '';
                 } else {
                     console.log('エラー');
                 }
-            }
+            },
+            deleteItem: function (index) {
+                if (confirm('削除してもよろしいでしょうか？')) {
+                    this.todos.splice(index, 1)
+                }
+            },
         }
     });
 })();
