@@ -37,3 +37,14 @@ body {
     text-decoration: line-through;
     color: #bbbbbb;
 }
+
+.info {
+    color: #bbbbbb;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}

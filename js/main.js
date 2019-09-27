@@ -5,21 +5,21 @@
         el: '#app',
         data: {
             newItem: '',
-            // todos: [
-            //     {
-            //         title: 'task1',
-            //         isDone: false,
-            //     },
-            //     {
-            //         title: 'task2',
-            //         isDone: false,
-            //     },
-            //     {
-            //         title: 'task3',
-            //         isDone: true,
-            //     },
-            // ]
-            todos: []
+            todos: [
+                {
+                    title: 'task1',
+                    isDone: false,
+                },
+                {
+                    title: 'task2',
+                    isDone: false,
+                },
+                {
+                    title: 'task3',
+                    isDone: true,
+                },
+            ],
+            isError: false,
         },
         methods: {
             addItem: function() {
@@ -31,7 +31,7 @@
                     this.todos.push(item);
                     this.newItem = '';
                 } else {
-                    console.log('エラー');
+                    this.isError = true;
                 }
             },
             deleteItem: function (index) {
@@ -39,6 +39,17 @@
                     this.todos.splice(index, 1)
                 }
             },
-        }
+            onInput: function () {
+                this.isError = false;
+            },
+        },
+        computed: {
+            remaining: function () {
+                var items = this.todos.filter(function (todo) {
+                    return ! todo.isDone;
+                });
+                return items.length;
+            }
+        },
     });
 })();
