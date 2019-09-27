@@ -17,6 +17,7 @@
         methods: {
             countUp: function () {
                 this.count++;
+                this.$emit('increment');
             }
         },
     });
@@ -26,5 +27,13 @@
         components: {
             'button-component': likeComponent
         },
+        data: {
+            total: 0,
+        },
+        methods: {
+            incrementTotal: function () {
+                this.total++;
+            }
+        }
     });
 })();
