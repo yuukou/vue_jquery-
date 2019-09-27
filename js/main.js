@@ -21,6 +21,14 @@
             ],
             isError: false,
         },
+        watch: {
+            todos: {
+                handler: function () {
+                    localStorage.setItem('todos', JSON.stringify(this.todos));
+                },
+                deep: true,
+            }
+        },
         methods: {
             addItem: function() {
                 if (this.newItem) {
