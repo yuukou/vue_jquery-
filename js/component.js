@@ -7,7 +7,13 @@
                 count: 0
             }
         },
-        template: '<button @click="countUp">Like {{ count }}</button>',
+        props: {
+            name: {
+                type: String,
+                default: 'Like',
+            }
+        },
+        template: '<button @click="countUp">{{ name }} {{ count }}</button>',
         methods: {
             countUp: function () {
                 this.count++;
@@ -18,7 +24,7 @@
     var app = new Vue({
         el: '#app-component',
         components: {
-            'like-component': likeComponent
+            'button-component': likeComponent
         },
     });
 })();
